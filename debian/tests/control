@@ -1,0 +1,64 @@
+Test-Command: /usr/share/cargo/bin/cargo-auto-test compiler_builtins 0.1.70 --all-targets --all-features
+Features: test-name=rust-compiler-builtins:@
+Depends: dh-cargo (>= 18), @
+Restrictions: allow-stderr, skip-not-installable, flaky
+
+Test-Command: /usr/share/cargo/bin/cargo-auto-test compiler_builtins 0.1.70 --all-targets --no-default-features --features compiler-builtins
+Features: test-name=librust-compiler-builtins-dev:compiler-builtins
+Depends: dh-cargo (>= 18), @
+Restrictions: allow-stderr, skip-not-installable, flaky
+
+Test-Command: /usr/share/cargo/bin/cargo-auto-test compiler_builtins 0.1.70 --all-targets 
+Features: test-name=librust-compiler-builtins-dev:default
+Depends: dh-cargo (>= 18), @
+Restrictions: allow-stderr, skip-not-installable, flaky
+
+Test-Command: /usr/share/cargo/bin/cargo-auto-test compiler_builtins 0.1.70 --all-targets --no-default-features --features mangled-names
+Features: test-name=librust-compiler-builtins-dev:mangled-names
+Depends: dh-cargo (>= 18), @
+Restrictions: allow-stderr, skip-not-installable, flaky
+
+Test-Command: /usr/share/cargo/bin/cargo-auto-test compiler_builtins 0.1.70 --all-targets --no-default-features --features mem
+Features: test-name=librust-compiler-builtins-dev:mem
+Depends: dh-cargo (>= 18), @
+Restrictions: allow-stderr, skip-not-installable, flaky
+
+Test-Command: /usr/share/cargo/bin/cargo-auto-test compiler_builtins 0.1.70 --all-targets --no-default-features --features no-asm
+Features: test-name=librust-compiler-builtins-dev:no-asm
+Depends: dh-cargo (>= 18), @
+Restrictions: allow-stderr, skip-not-installable, flaky
+
+Test-Command: /usr/share/cargo/bin/cargo-auto-test compiler_builtins 0.1.70 --all-targets --no-default-features --features no-lang-items
+Features: test-name=librust-compiler-builtins-dev:no-lang-items
+Depends: dh-cargo (>= 18), @
+Restrictions: allow-stderr, skip-not-installable, flaky
+
+Test-Command: /usr/share/cargo/bin/cargo-auto-test compiler_builtins 0.1.70 --all-targets --no-default-features --features public-test-deps
+Features: test-name=librust-compiler-builtins-dev:public-test-deps
+Depends: dh-cargo (>= 18), @
+Restrictions: allow-stderr, skip-not-installable, flaky
+
+Test-Command: /usr/share/cargo/bin/cargo-auto-test compiler_builtins 0.1.70 --all-targets --no-default-features
+Features: test-name=librust-compiler-builtins-dev:
+Depends: dh-cargo (>= 18), @
+Restrictions: allow-stderr, skip-not-installable, flaky
+
+Test-Command: /usr/share/cargo/bin/cargo-auto-test compiler_builtins 0.1.70 --all-targets --no-default-features --features cc
+Features: test-name=librust-compiler-builtins+c-dev:cc
+Depends: dh-cargo (>= 18), @
+Restrictions: allow-stderr, skip-not-installable, flaky
+
+Test-Command: /usr/share/cargo/bin/cargo-auto-test compiler_builtins 0.1.70 --all-targets --no-default-features --features c
+Features: test-name=librust-compiler-builtins+c-dev:c
+Depends: dh-cargo (>= 18), @
+Restrictions: allow-stderr, skip-not-installable, flaky
+
+Test-Command: /usr/share/cargo/bin/cargo-auto-test compiler_builtins 0.1.70 --all-targets --no-default-features --features core
+Features: test-name=librust-compiler-builtins+core-dev:core
+Depends: dh-cargo (>= 18), @
+Restrictions: allow-stderr, skip-not-installable, flaky
+
+Test-Command: /usr/share/cargo/bin/cargo-auto-test compiler_builtins 0.1.70 --all-targets --no-default-features --features rustc-dep-of-std
+Features: test-name=librust-compiler-builtins+rustc-dep-of-std-dev:rustc-dep-of-std
+Depends: dh-cargo (>= 18), @
+Restrictions: allow-stderr, skip-not-installable, flaky

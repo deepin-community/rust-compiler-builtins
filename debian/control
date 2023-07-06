@@ -1,15 +1,123 @@
-Source: template-repository
-Section: unknown
+Source: rust-compiler-builtins
+Section: rust
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Build-Depends: debhelper (>= 12),
+ dh-cargo (>= 24),
+ cargo:native <!nocheck>,
+ rustc:native <!nocheck>,
+ libstd-rust-dev <!nocheck>
+Maintainer: Debian Rust Maintainers <pkg-rust-maintainers@alioth-lists.debian.net>
+Uploaders:
+ kpcyrd <git@rxv.cc>
+Standards-Version: 4.5.1
+Vcs-Git: https://salsa.debian.org/rust-team/debcargo-conf.git [src/compiler-builtins]
+Vcs-Browser: https://salsa.debian.org/rust-team/debcargo-conf/tree/master/src/compiler-builtins
+Homepage: https://github.com/rust-lang/compiler-builtins
+X-Cargo-Crate: compiler_builtins
+Rules-Requires-Root: no
 
-Package: template-repository
+Package: librust-compiler-builtins-dev
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Multi-Arch: same
+Depends:
+ ${misc:Depends}
+Suggests:
+ librust-compiler-builtins+c-dev (= ${binary:Version}),
+ librust-compiler-builtins+core-dev (= ${binary:Version}),
+ librust-compiler-builtins+rustc-dep-of-std-dev (= ${binary:Version})
+Provides:
+ librust-compiler-builtins+compiler-builtins-dev (= ${binary:Version}),
+ librust-compiler-builtins+default-dev (= ${binary:Version}),
+ librust-compiler-builtins+mangled-names-dev (= ${binary:Version}),
+ librust-compiler-builtins+mem-dev (= ${binary:Version}),
+ librust-compiler-builtins+no-asm-dev (= ${binary:Version}),
+ librust-compiler-builtins+no-lang-items-dev (= ${binary:Version}),
+ librust-compiler-builtins+public-test-deps-dev (= ${binary:Version}),
+ librust-compiler-builtins-0-dev (= ${binary:Version}),
+ librust-compiler-builtins-0+compiler-builtins-dev (= ${binary:Version}),
+ librust-compiler-builtins-0+default-dev (= ${binary:Version}),
+ librust-compiler-builtins-0+mangled-names-dev (= ${binary:Version}),
+ librust-compiler-builtins-0+mem-dev (= ${binary:Version}),
+ librust-compiler-builtins-0+no-asm-dev (= ${binary:Version}),
+ librust-compiler-builtins-0+no-lang-items-dev (= ${binary:Version}),
+ librust-compiler-builtins-0+public-test-deps-dev (= ${binary:Version}),
+ librust-compiler-builtins-0.1-dev (= ${binary:Version}),
+ librust-compiler-builtins-0.1+compiler-builtins-dev (= ${binary:Version}),
+ librust-compiler-builtins-0.1+default-dev (= ${binary:Version}),
+ librust-compiler-builtins-0.1+mangled-names-dev (= ${binary:Version}),
+ librust-compiler-builtins-0.1+mem-dev (= ${binary:Version}),
+ librust-compiler-builtins-0.1+no-asm-dev (= ${binary:Version}),
+ librust-compiler-builtins-0.1+no-lang-items-dev (= ${binary:Version}),
+ librust-compiler-builtins-0.1+public-test-deps-dev (= ${binary:Version}),
+ librust-compiler-builtins-0.1.70-dev (= ${binary:Version}),
+ librust-compiler-builtins-0.1.70+compiler-builtins-dev (= ${binary:Version}),
+ librust-compiler-builtins-0.1.70+default-dev (= ${binary:Version}),
+ librust-compiler-builtins-0.1.70+mangled-names-dev (= ${binary:Version}),
+ librust-compiler-builtins-0.1.70+mem-dev (= ${binary:Version}),
+ librust-compiler-builtins-0.1.70+no-asm-dev (= ${binary:Version}),
+ librust-compiler-builtins-0.1.70+no-lang-items-dev (= ${binary:Version}),
+ librust-compiler-builtins-0.1.70+public-test-deps-dev (= ${binary:Version})
+Description: Compiler intrinsics used by the Rust compiler - Rust source code
+ Also available for other targets if necessary!
+ .
+ This package contains the source for the Rust compiler_builtins crate, packaged
+ by debcargo for use with cargo and dh-cargo.
+
+Package: librust-compiler-builtins+c-dev
+Architecture: any
+Multi-Arch: same
+Depends:
+ ${misc:Depends},
+ librust-compiler-builtins-dev (= ${binary:Version}),
+ librust-cc-1+default-dev
+Provides:
+ librust-compiler-builtins+cc-dev (= ${binary:Version}),
+ librust-compiler-builtins-0+c-dev (= ${binary:Version}),
+ librust-compiler-builtins-0+cc-dev (= ${binary:Version}),
+ librust-compiler-builtins-0.1+c-dev (= ${binary:Version}),
+ librust-compiler-builtins-0.1+cc-dev (= ${binary:Version}),
+ librust-compiler-builtins-0.1.70+c-dev (= ${binary:Version}),
+ librust-compiler-builtins-0.1.70+cc-dev (= ${binary:Version})
+Description: Compiler intrinsics used by the Rust compiler - feature "c" and 1 more
+ Also available for other targets if necessary!
+ .
+ This metapackage enables feature "c" for the Rust compiler_builtins crate, by
+ pulling in any additional dependencies needed by that feature.
+ .
+ Additionally, this package also provides the "cc" feature.
+
+Package: librust-compiler-builtins+core-dev
+Architecture: any
+Multi-Arch: same
+Depends:
+ ${misc:Depends},
+ librust-compiler-builtins-dev (= ${binary:Version}),
+ librust-rustc-std-workspace-core-1+default-dev
+Provides:
+ librust-compiler-builtins-0+core-dev (= ${binary:Version}),
+ librust-compiler-builtins-0.1+core-dev (= ${binary:Version}),
+ librust-compiler-builtins-0.1.70+core-dev (= ${binary:Version})
+Description: Compiler intrinsics used by the Rust compiler - feature "core"
+ Also available for other targets if necessary!
+ .
+ This metapackage enables feature "core" for the Rust compiler_builtins crate,
+ by pulling in any additional dependencies needed by that feature.
+
+Package: librust-compiler-builtins+rustc-dep-of-std-dev
+Architecture: any
+Multi-Arch: same
+Depends:
+ ${misc:Depends},
+ librust-compiler-builtins-dev (= ${binary:Version}),
+ librust-compiler-builtins+compiler-builtins-dev (= ${binary:Version}),
+ librust-rustc-std-workspace-core-1+default-dev
+Provides:
+ librust-compiler-builtins-0+rustc-dep-of-std-dev (= ${binary:Version}),
+ librust-compiler-builtins-0.1+rustc-dep-of-std-dev (= ${binary:Version}),
+ librust-compiler-builtins-0.1.70+rustc-dep-of-std-dev (= ${binary:Version})
+Description: Compiler intrinsics used by the Rust compiler - feature "rustc-dep-of-std"
+ Also available for other targets if necessary!
+ .
+ This metapackage enables feature "rustc-dep-of-std" for the Rust
+ compiler_builtins crate, by pulling in any additional dependencies needed by
+ that feature.
